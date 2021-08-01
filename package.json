@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "dev": "ng serve -o",
+    "backend": "cd backend && nodemon server",
+    "database": "cd backend && mongod --dbpath ~/Gajanan/data/db",
+    "start": "concurrently \"npm run database\" \"npm run backend\" \"npm run dev\" ",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -19,6 +22,7 @@
     "@angular/platform-browser": "~11.2.7",
     "@angular/platform-browser-dynamic": "~11.2.7",
     "@angular/router": "~11.2.7",
+    "concurrently": "^6.2.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
