@@ -23,6 +23,7 @@ mongoose
 
 // Setting up port with express js
 const vendorRoute = require("../backend/routes/vendor.routes");
+const categoryRoute = require("../backend/routes/category.routes");
 const app = express();
 app.use(bodyParser.json());
 app.use(
@@ -34,6 +35,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, "dist/mean-stack-crud-app")));
 app.use("/", express.static(path.join(__dirname, "dist/mean-stack-crud-app")));
 app.use("/api/vendor", vendorRoute);
+app.use("/api/category", categoryRoute);
 
 // Create port
 const port = process.env.PORT || 4000;
