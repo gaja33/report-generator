@@ -19,20 +19,22 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatSelectModule } from "@angular/material/select";
 
 import { VendorComponent } from "./components/vendor/vendor.component";
-import { ProductComponent } from "./components/product/product.component";
+//import { ProductComponent } from "./components/product/product.component";
 import { ReportComponent } from "./components/report/report.component";
 
 import { VendorServicesService } from "./services/vendor/vendor-services.service";
 import { VendorAddEditComponent } from "./components/vendor/vendor-add-edit/vendor-add-edit.component";
-import { ProductAddEditComponent } from './components/product/product-add-edit/product-add-edit.component';
+//import { ProductAddEditComponent } from './components/product/product-add-edit/product-add-edit.component';
+import { CategoryComponent } from "./components/category/category.component";
+import { CategoryAddEditComponent } from "./components/category/category-add-edit/category-add-edit.component";
 @NgModule({
   declarations: [
     AppComponent,
     VendorComponent,
-    ProductComponent,
     ReportComponent,
     VendorAddEditComponent,
-    ProductAddEditComponent,
+    CategoryComponent,
+    CategoryAddEditComponent,
   ],
   imports: [
     BrowserModule,
