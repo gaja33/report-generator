@@ -5,39 +5,39 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from "@angular/core";
-import { VendorServicesService } from "./../../services/vendor/vendor-services.service";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
-import { Category } from "src/app/models/category/category.model";
-import { CategoryService } from "src/app/services/category/category.service";
+import { Product } from "src/app/models/product/product.model";
+import { ProductService } from "src/app/services/product/product.service";
 
 @Component({
-  selector: "app-category",
-  templateUrl: "./category.component.html",
-  styleUrls: ["./category.component.scss"],
+  selector: "app-product",
+  templateUrl: "./product.component.html",
+  styleUrls: ["./product.component.scss"],
 })
-export class CategoryComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ["catName", "action"];
-  dataSource: MatTableDataSource<Category>;
+export class ProductComponent implements OnInit, AfterViewInit {
+  displayedColumns: string[] = ["partNumber", "partName", "vendor", "action"];
+  dataSource: MatTableDataSource<Product>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private categoryService: CategoryService) {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit() {
-    this.getCategory();
+    this.getProducts();
   }
 
-  getCategory() {
-    this.categoryService.getCategorys().subscribe((resp) => {
+  getProducts() {
+    this.productService.getProducts().subscribe((resp) => {
       // Assign the data to the data source for the table to render
       this.dataSource = new MatTableDataSource(resp);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      console.log(this.dataSource);
     });
   }
 
@@ -50,10 +50,10 @@ export class CategoryComponent implements OnInit, AfterViewInit {
     }
   }
 
-  deleteCategory(id) {
-    console.log(id);
-    this.categoryService.deleteCategory(id).subscribe((resp) => {
-      this.getCategory();
+  deleteProduct(item, i) {
+    console.log(item._id);
+    this.productService.deleteProduct(item._id).subscribe((resp) => {
+      this.getProducts();
     });
   }
 }

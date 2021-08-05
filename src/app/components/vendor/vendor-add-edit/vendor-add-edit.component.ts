@@ -15,8 +15,8 @@ export class VendorAddEditComponent implements OnInit {
   isAddMode: boolean;
   loading = false;
   submitted = false;
-  typesComp: { display: string; value: string }[];
-  status: { display: string; value: string }[];
+  typesComp: string[];
+  status: string[];
   showOthers: boolean = false;
 
   constructor(
@@ -30,19 +30,19 @@ export class VendorAddEditComponent implements OnInit {
     this.id = this.route.snapshot.params["id"];
     this.isAddMode = !this.id;
     this.typesComp = [
-      { display: "Public Limited Co", value: "1" },
-      { display: "Partnership Co", value: "2" },
-      { display: "Proprietorship", value: "3" },
-      { display: "Govt. Sector", value: "4" },
-      { display: "Others", value: "5" },
+      "Public Limited Co",
+      "Partnership Co",
+      "Proprietorship",
+      "Govt. Sector",
+      "Others",
     ];
 
     this.status = [
-      { display: "MANUFACTURER", value: "1" },
-      { display: "AUTHORISED DEALER", value: "2" },
-      { display: "STOCKIST/TRADER", value: "3" },
-      { display: "IMPORTER/INDIAN AGENT", value: "4" },
-      { display: "SERVICE PROVIDER", value: "5" },
+      "MANUFACTURER",
+      "AUTHORISED DEALER",
+      "STOCKIST/TRADER",
+      "IMPORTER/INDIAN AGENT",
+      "SERVICE PROVIDER",
     ];
 
     this.form = this.formBuilder.group({
