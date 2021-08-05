@@ -20,10 +20,6 @@
     <div class="mat-elevation-z8">
       <table style="width: 100%" mat-table [dataSource]="dataSource" matSort>
         <!-- ID Column -->
-        <ng-container matColumnDef="_id">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-          <td mat-cell *matCellDef="let row">{{ row._id }}</td>
-        </ng-container>
         <ng-container matColumnDef="metalName">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Metal Name</th>
           <td mat-cell *matCellDef="let row">{{ row.metalName }}</td>

@@ -18,7 +18,7 @@ import { MetalService } from "src/app/services/metal/metal.service";
   styleUrls: ["./metals.component.scss"],
 })
 export class MetalsComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ["_id", "metalName", "thickness", "action"];
+  displayedColumns: string[] = ["metalName", "thickness", "action"];
   dataSource: MatTableDataSource<Metal>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
