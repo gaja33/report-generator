@@ -24,6 +24,8 @@ mongoose
 // Setting up port with express js
 const vendorRoute = require("../backend/routes/vendor.routes");
 const categoryRoute = require("../backend/routes/category.routes");
+const metalRoute = require("../backend/routes/metal.routes");
+
 const app = express();
 app.use(bodyParser.json());
 app.use(
@@ -36,6 +38,7 @@ app.use(express.static(path.join(__dirname, "dist/mean-stack-crud-app")));
 app.use("/", express.static(path.join(__dirname, "dist/mean-stack-crud-app")));
 app.use("/api/vendor", vendorRoute);
 app.use("/api/category", categoryRoute);
+app.use("/api/metal", metalRoute);
 
 // Create port
 const port = process.env.PORT || 4000;

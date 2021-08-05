@@ -59,7 +59,7 @@ categoryRoute.route("/update/:id").put((req, res, next) => {
 
 // Delete Category
 categoryRoute.route("/delete/:id").delete((req, res, next) => {
-  Category.findOneAndRemove(req.params.id, (error, data) => {
+  Category.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
       return next(error);
     } else {

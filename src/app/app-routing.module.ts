@@ -2,6 +2,8 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { CategoryAddEditComponent } from "./components/category/category-add-edit/category-add-edit.component";
 import { CategoryComponent } from "./components/category/category.component";
+import { MetalsAddEditComponent } from "./components/metals/metals-add-edit/metals-add-edit.component";
+import { MetalsComponent } from "./components/metals/metals.component";
 //import { ProductComponent } from "./components/product/product.component";
 import { ReportComponent } from "./components/report/report.component";
 import { VendorAddEditComponent } from "./components/vendor/vendor-add-edit/vendor-add-edit.component";
@@ -15,6 +17,9 @@ const routes: Routes = [
   { path: "category", component: CategoryComponent },
   { path: "category/add", component: CategoryAddEditComponent },
   { path: "category/edit/:id", component: CategoryAddEditComponent },
+  { path: "metal", component: MetalsComponent },
+  { path: "metal/add", component: MetalsAddEditComponent },
+  { path: "metal/edit/:id", component: MetalsAddEditComponent },
   //{ path: "products", component: ProductComponent },
   { path: "reports", component: ReportComponent },
 ];

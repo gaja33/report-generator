@@ -1,13 +1,13 @@
 const express = require("express");
 const app = express();
-const vendorRoute = express.Router();
+const metalRoute = express.Router();
 
-// Vendor model
-let Vendor = require("../models/Vendor");
+// Metal model
+let Metal = require("../models/Metal");
 
-// Add Vendor
-vendorRoute.route("/create").post((req, res, next) => {
-  Vendor.create(req.body, (error, data) => {
+// Add Metal
+metalRoute.route("/create").post((req, res, next) => {
+  Metal.create(req.body, (error, data) => {
     if (error) {
       return next(error);
     } else {
@@ -16,9 +16,9 @@ vendorRoute.route("/create").post((req, res, next) => {
   });
 });
 
-// Get All Vendor
-vendorRoute.route("/").get((req, res) => {
-  Vendor.find((error, data) => {
+// Get All Metal
+metalRoute.route("/").get((req, res) => {
+  Metal.find((error, data) => {
     if (error) {
       return next(error);
     } else {
@@ -27,9 +27,9 @@ vendorRoute.route("/").get((req, res) => {
   });
 });
 
-// Get single Vendor
-vendorRoute.route("/read/:id").get((req, res) => {
-  Vendor.findById(req.params.id, (error, data) => {
+// Get single Metal
+metalRoute.route("/read/:id").get((req, res) => {
+  Metal.findById(req.params.id, (error, data) => {
     if (error) {
       return next(error);
     } else {
@@ -38,9 +38,9 @@ vendorRoute.route("/read/:id").get((req, res) => {
   });
 });
 
-// Update Vendor
-vendorRoute.route("/update/:id").put((req, res, next) => {
-  Vendor.findByIdAndUpdate(
+// Update Metal
+metalRoute.route("/update/:id").put((req, res, next) => {
+  Metal.findByIdAndUpdate(
     req.params.id,
     {
       $set: req.body,
@@ -57,9 +57,9 @@ vendorRoute.route("/update/:id").put((req, res, next) => {
   );
 });
 
-// Delete Vendor
-vendorRoute.route("/delete/:id").delete((req, res, next) => {
-  Vendor.findByIdAndRemove(req.params.id, (error, data) => {
+// Delete Metal
+metalRoute.route("/delete/:id").delete((req, res, next) => {
+  Metal.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
       return next(error);
     } else {
@@ -70,4 +70,4 @@ vendorRoute.route("/delete/:id").delete((req, res, next) => {
   });
 });
 
-module.exports = vendorRoute;
+module.exports = metalRoute;
