@@ -70,4 +70,16 @@ productRoute.route("/delete/:id").delete((req, res, next) => {
   });
 });
 
+//Search products
+productRoute.route("/search").get((req, res, next) => {
+  var regex = new RegExp(req.query["term"], "i");
+  Product.find({ partNumber: regex }, (error, data) => {
+    if (error) {
+      return next(error);
+    } else {
+      res.status(200).json(data);
+    }
+  });
+});
+
 module.exports = productRoute;
