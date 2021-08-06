@@ -1,10 +1,10 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Category/Colour List</mat-card-title>
+    <mat-card-title>Part List</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <button mat-raised-button color="primary" routerLink="/category/add">
-      Add Category/Colour
+    <button mat-raised-button color="primary" routerLink="/products/add">
+      Add Part
     </button>
     <br />
     <br />
@@ -20,23 +20,31 @@
     <div class="mat-elevation-z8">
       <table style="width: 100%" mat-table [dataSource]="dataSource" matSort>
         <!-- ID Column -->
-        <ng-container matColumnDef="catName">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>
-            Category/Colour Name
-          </th>
-          <td mat-cell *matCellDef="let row">{{ row.catName }}</td>
+        <ng-container matColumnDef="partNumber">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Part Number</th>
+          <td mat-cell *matCellDef="let row">{{ row.partNumber }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="partName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Part Name</th>
+          <td mat-cell *matCellDef="let row">{{ row.partName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="vendor">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Vendor</th>
+          <td mat-cell *matCellDef="let row">{{ row.vendor }}</td>
         </ng-container>
 
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-          <td mat-cell *matCellDef="let row">
+          <td mat-cell *matCellDef="let row; let i = index">
             <mat-icon
-              [routerLink]="['/category/edit/', row._id]"
+              [routerLink]="['/products/edit/', row._id]"
               style="color: rgb(22, 99, 193); cursor: pointer"
               >edit</mat-icon
             >
             <mat-icon
-              (click)="deleteCategory(row._id)"
+              (click)="deleteProduct(row, i)"
               style="color: red; cursor: pointer"
               >delete</mat-icon
             >

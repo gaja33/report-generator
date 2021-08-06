@@ -24,11 +24,9 @@
               (selectionChange)="onChangeType()"
             >
               <mat-option value="">Please Select</mat-option>
-              <mat-option
-                *ngFor="let types of typesComp"
-                [value]="types.value"
-                >{{ types.display }}</mat-option
-              >
+              <mat-option *ngFor="let types of typesComp" [value]="types">{{
+                types
+              }}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -47,8 +45,8 @@
             <mat-label>Status of Company</mat-label>
             <mat-select formControlName="statusOfComp">
               <mat-option value="">Please Select</mat-option>
-              <mat-option *ngFor="let types of status" [value]="types.value">{{
-                types.display
+              <mat-option *ngFor="let types of status" [value]="types">{{
+                types
               }}</mat-option>
             </mat-select>
           </mat-form-field>

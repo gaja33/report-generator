@@ -51,7 +51,7 @@ export class MetalsComponent implements OnInit, AfterViewInit {
     }
   }
 
-  deleteVendor(item, i) {
+  deleteMetal(item, i) {
     console.log(item._id);
     this.metalService.deleteMetal(item._id).subscribe((resp) => {
       this.getMetal();
