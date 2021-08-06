@@ -6,6 +6,7 @@ import { MetalsAddEditComponent } from "./components/metals/metals-add-edit/meta
 import { MetalsComponent } from "./components/metals/metals.component";
 import { ProductAddEditComponent } from "./components/product/product-add-edit/product-add-edit.component";
 import { ProductComponent } from "./components/product/product.component";
+import { ReportMasterComponent } from "./components/report-master/report-master.component";
 import { ReportComponent } from "./components/report/report.component";
 import { VendorAddEditComponent } from "./components/vendor/vendor-add-edit/vendor-add-edit.component";
 import { VendorComponent } from "./components/vendor/vendor.component";
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: "products", component: ProductComponent },
   { path: "products/add", component: ProductAddEditComponent },
   { path: "products/edit/:id", component: ProductAddEditComponent },
+  { path: "reportmaster", component: ReportMasterComponent },
   { path: "reports", component: ReportComponent },
 ];
 

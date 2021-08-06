@@ -29,6 +29,7 @@ import { CategoryComponent } from "./components/category/category.component";
 import { CategoryAddEditComponent } from "./components/category/category-add-edit/category-add-edit.component";
 import { MetalsComponent } from "./components/metals/metals.component";
 import { MetalsAddEditComponent } from "./components/metals/metals-add-edit/metals-add-edit.component";
+import { ReportMasterComponent } from './components/report-master/report-master.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +42,7 @@ import { MetalsAddEditComponent } from "./components/metals/metals-add-edit/meta
     MetalsAddEditComponent,
     ProductComponent,
     ProductAddEditComponent,
+    ReportMasterComponent,
   ],
   imports: [
     BrowserModule,
