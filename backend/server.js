@@ -26,6 +26,7 @@ const vendorRoute = require("../backend/routes/vendor.routes");
 const categoryRoute = require("../backend/routes/category.routes");
 const metalRoute = require("../backend/routes/metal.routes");
 const productRoute = require("../backend/routes/product.routes");
+const reportMasterRoute = require("../backend/routes/reportmaster.routes");
 
 const app = express();
 app.use(bodyParser.json());
@@ -41,6 +42,7 @@ app.use("/api/vendor", vendorRoute);
 app.use("/api/category", categoryRoute);
 app.use("/api/metal", metalRoute);
 app.use("/api/product", productRoute);
+app.use("/api/reportmaster", reportMasterRoute);
 
 // Create port
 const port = process.env.PORT || 4000;
