@@ -57,7 +57,6 @@ export class VendorComponent implements OnInit, AfterViewInit {
   }
 
   deleteVendor(id) {
-    console.log(id);
     this.vendorService.deleteVendor(id).subscribe((resp) => {
       this.getVendors();
     });

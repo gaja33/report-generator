@@ -5,35 +5,34 @@ import {
   ViewChild,
   ViewEncapsulation,
 } from "@angular/core";
-import { VendorServicesService } from "./../../services/vendor/vendor-services.service";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
-import { Metal } from "src/app/models/metals/metal.model";
-import { MetalService } from "src/app/services/metal/metal.service";
+import { ReportGenerator } from "src/app/models/report-generator/report-generator.model";
+import { ReportGeneratorService } from "src/app/services/report-generator/report-generator.service";
 
 @Component({
-  selector: "app-metals",
-  templateUrl: "./metals.component.html",
-  styleUrls: ["./metals.component.scss"],
+  selector: "app-report",
+  templateUrl: "./report.component.html",
+  styleUrls: ["./report.component.scss"],
 })
-export class MetalsComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ["metalName", "thickness", "action"];
-  dataSource: MatTableDataSource<Metal>;
+export class ReportComponent implements OnInit, AfterViewInit {
+  displayedColumns: string[] = ["reportNo", "skiDCNo", "toAddress", "action"];
+  dataSource: MatTableDataSource<ReportGenerator>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private metalService: MetalService) {}
+  constructor(private reportService: ReportGeneratorService) {}
 
   ngOnInit(): void {}
 
   ngAfterViewInit() {
-    this.getMetal();
+    this.getReports();
   }
 
-  getMetal() {
-    this.metalService.getMetals().subscribe((resp) => {
+  getReports() {
+    this.reportService.getReportGenerators().subscribe((resp) => {
       // Assign the data to the data source for the table to render
       this.dataSource = new MatTableDataSource(resp);
       this.dataSource.paginator = this.paginator;
@@ -50,9 +49,9 @@ export class MetalsComponent implements OnInit, AfterViewInit {
     }
   }
 
-  deleteMetal(item, i) {
-    this.metalService.deleteMetal(item._id).subscribe((resp) => {
-      this.getMetal();
+  deleteProduct(item, i) {
+    this.reportService.deleteReportGenerator(item._id).subscribe((resp) => {
+      this.getReports();
     });
   }
 }

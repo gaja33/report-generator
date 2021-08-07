@@ -47,7 +47,6 @@ export class ReportMasterComponent implements OnInit {
     }
 
     this.loading = true;
-    console.log(this.form.value);
     if (this.id) {
       this.updateReportMaster();
     } else {
@@ -59,7 +58,6 @@ export class ReportMasterComponent implements OnInit {
     this.reportMasterService
       .createReportMaster(this.form.value)
       .subscribe((response) => {
-        console.log(response);
         this.loading = false;
         this.router.navigate(["/reports"]);
       });
@@ -69,7 +67,6 @@ export class ReportMasterComponent implements OnInit {
     this.reportMasterService
       .updateReportMaster(this.id, this.form.value)
       .subscribe((response) => {
-        console.log(response);
         this.loading = false;
         this.router.navigate(["/reports"]);
       });

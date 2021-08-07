@@ -17,6 +17,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSelectModule } from "@angular/material/select";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
 
 import { VendorComponent } from "./components/vendor/vendor.component";
 import { ProductComponent } from "./components/product/product.component";
@@ -29,7 +30,8 @@ import { CategoryComponent } from "./components/category/category.component";
 import { CategoryAddEditComponent } from "./components/category/category-add-edit/category-add-edit.component";
 import { MetalsComponent } from "./components/metals/metals.component";
 import { MetalsAddEditComponent } from "./components/metals/metals-add-edit/metals-add-edit.component";
-import { ReportMasterComponent } from './components/report-master/report-master.component';
+import { ReportMasterComponent } from "./components/report-master/report-master.component";
+import { ReportGeneratorComponent } from "./components/report/report-generator/report-generator.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +45,7 @@ import { ReportMasterComponent } from './components/report-master/report-master.
     ProductComponent,
     ProductAddEditComponent,
     ReportMasterComponent,
+    ReportGeneratorComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +65,7 @@ import { ReportMasterComponent } from './components/report-master/report-master.
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    MatAutocompleteModule,
   ],
   providers: [VendorServicesService],
   bootstrap: [AppComponent],

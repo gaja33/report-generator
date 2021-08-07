@@ -60,7 +60,6 @@ export class ProductAddEditComponent implements OnInit {
 
     if (!this.isAddMode) {
       this.productService.getProduct(this.id).subscribe((x) => {
-        console.log(x);
         this.form.patchValue(x);
         let thickness = [];
         x.thickness.forEach((x) => thickness.push(x._id));
@@ -93,7 +92,6 @@ export class ProductAddEditComponent implements OnInit {
   createProduct() {
     this.updateThickness();
     this.productService.createProduct(this.form.value).subscribe((response) => {
-      console.log(response);
       this.router.navigate(["/products"]);
     });
   }
@@ -103,7 +101,6 @@ export class ProductAddEditComponent implements OnInit {
     this.productService
       .updateProduct(this.id, this.form.value)
       .subscribe((response) => {
-        console.log(response);
         this.router.navigate(["/products"]);
       });
   }
