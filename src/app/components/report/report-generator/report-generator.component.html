@@ -3,7 +3,7 @@
     <mat-card-title>Report Generator</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="form" (ngSubmit)="onSubmit('open')">
       <div class="row">
         <div class="col-4">
           <mat-form-field appearance="fill">
@@ -20,12 +20,9 @@
         <div class="col-4">
           <mat-form-field appearance="outline">
             <mat-label>To Address</mat-label>
-            <mat-select
-              formControlName="toAddress"
-              (selectionChange)="getVendorDetails()"
-            >
+            <mat-select formControlName="toAddress">
               <mat-option value="">Please Select</mat-option>
-              <mat-option *ngFor="let vendor of vendors" [value]="vendor._id">{{
+              <mat-option *ngFor="let vendor of vendors" [value]="vendor">{{
                 vendor.compName
               }}</mat-option>
             </mat-select>
@@ -164,7 +161,33 @@
                 *ngIf="loading"
                 class="spinner-border spinner-border-sm mr-1"
               ></span
-              >Save</button
+              >Create</button
+            >&nbsp;
+            <button
+              type="submit"
+              [disabled]="loading"
+              mat-raised-button
+              color="warn"
+              (click)="onSubmit('print')"
+            >
+              <span
+                *ngIf="loading"
+                class="spinner-border spinner-border-sm mr-1"
+              ></span
+              >Print</button
+            >&nbsp;
+            <button
+              type="submit"
+              [disabled]="loading"
+              mat-raised-button
+              color="accent"
+              (click)="onSubmit('download')"
+            >
+              <span
+                *ngIf="loading"
+                class="spinner-border spinner-border-sm mr-1"
+              ></span
+              >Download</button
             >&nbsp;
             <a routerLink="/reports" mat-raised-button>Cancel</a>
           </div>

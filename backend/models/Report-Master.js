@@ -13,6 +13,7 @@ let ReportMaster = new Schema(
   },
   {
     collection: "reportmaster",
+    timestamps: true,
   }
 );
 

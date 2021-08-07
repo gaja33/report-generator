@@ -28,6 +28,7 @@ let Product = new Schema(
   },
   {
     collection: "product",
+    timestamps: true,
   }
 );
 

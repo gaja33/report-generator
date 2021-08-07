@@ -13,6 +13,7 @@ let Metal = new Schema(
   },
   {
     collection: "metal",
+    timestamps: true,
   }
 );
 

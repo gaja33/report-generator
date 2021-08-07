@@ -10,6 +10,7 @@ let Category = new Schema(
   },
   {
     collection: "category",
+    timestamps: true,
   }
 );
 

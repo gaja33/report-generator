@@ -34,7 +34,7 @@
 
         <ng-container matColumnDef="toAddress">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Vendor</th>
-          <td mat-cell *matCellDef="let row">{{ row.toAddress }}</td>
+          <td mat-cell *matCellDef="let row">{{ row.toAddress.compName }}</td>
         </ng-container>
 
         <ng-container matColumnDef="action">
