@@ -1,0 +1,199 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Report Generator</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="onSubmit('open')">
+      <div class="row">
+        <div class="col-4">
+          <mat-form-field appearance="fill">
+            <mat-label>Report Number</mat-label>
+            <input
+              matInput
+              placeholder="Enter Part Number"
+              formControlName="reportNo"
+              readonly
+            />
+            <span matPrefix>{{ preffix }} &nbsp;</span>
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field appearance="outline">
+            <mat-label>To Address</mat-label>
+            <mat-select formControlName="toAddress">
+              <mat-option value="">Please Select</mat-option>
+              <mat-option *ngFor="let vendor of vendors" [value]="vendor">{{
+                vendor.compName
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field appearance="outline">
+            <mat-label>SKI DC No.</mat-label>
+            <input
+              matInput
+              placeholder="Enter SKI DC No."
+              formControlName="skiDCNo"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Cust DC No.</mat-label>
+            <input
+              matInput
+              placeholder="Enter Cust DC No."
+              formControlName="custDCNo"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Lot No.</mat-label>
+            <input
+              matInput
+              placeholder="Enter Lot No."
+              formControlName="lotNo"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field appearance="outline">
+            <mat-label>Remarks</mat-label>
+            <input
+              matInput
+              placeholder="Enter Remarks"
+              formControlName="remarks"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field appearance="outline">
+            <input
+              #inputField
+              type="text"
+              placeholder="Add Parts"
+              aria-label="Number"
+              matInput
+              [formControl]="myControl"
+              [matAutocomplete]="auto"
+            />
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option
+                *ngFor="let option of filteredOptions"
+                [value]="option.partName"
+                (onSelectionChange)="selected(option)"
+              >
+                {{ option.partName }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="list-group list-group-flush">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Sl No.</th>
+                  <th>Part Number</th>
+                  <th>Part Name</th>
+                  <th>Thickness</th>
+                  <th>Lot Size(Kg/No)</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let ticket of selectedA; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ ticket.partNumber }}</td>
+                  <td>{{ ticket.partName }}</td>
+                  <td>
+                    <table>
+                      <tbody>
+                        <tr
+                          *ngFor="let metal of ticket.thickness; let j = index"
+                        >
+                          <td>{{ metal.metalName }}-{{ metal.thickness }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                  <td>
+                    <mat-form-field appearance="outline">
+                      <input
+                        matInput
+                        placeholder="Enter Lot Size"
+                        [(ngModel)]="ticket['lot']"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                    </mat-form-field>
+                  </td>
+                  <td style="vertical-align: middle; text-align: center">
+                    <mat-icon
+                      style="color: red; cursor: pointer"
+                      (click)="deleteParts(i)"
+                      >delete</mat-icon
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="list-group-item"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="form-group">
+            <button
+              type="submit"
+              [disabled]="loading"
+              mat-raised-button
+              color="primary"
+            >
+              <span
+                *ngIf="loading"
+                class="spinner-border spinner-border-sm mr-1"
+              ></span
+              >Create</button
+            >&nbsp;
+            <button
+              type="submit"
+              [disabled]="loading"
+              mat-raised-button
+              color="warn"
+              (click)="onSubmit('print')"
+            >
+              <span
+                *ngIf="loading"
+                class="spinner-border spinner-border-sm mr-1"
+              ></span
+              >Print</button
+            >&nbsp;
+            <button
+              type="submit"
+              [disabled]="loading"
+              mat-raised-button
+              color="accent"
+              (click)="onSubmit('download')"
+            >
+              <span
+                *ngIf="loading"
+                class="spinner-border spinner-border-sm mr-1"
+              ></span
+              >Download</button
+            >&nbsp;
+            <a routerLink="/reports" mat-raised-button>Cancel</a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions> </mat-card-actions>
+</mat-card>
