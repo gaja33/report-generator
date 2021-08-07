@@ -8,7 +8,7 @@ let ReportGenerator = new Schema(
       type: String,
     },
     toAddress: {
-      type: String,
+      type: Object,
     },
     skiDCNo: {
       type: String,
@@ -28,6 +28,7 @@ let ReportGenerator = new Schema(
   },
   {
     collection: "reportgenerator",
+    timestamps: true,
   }
 );
 

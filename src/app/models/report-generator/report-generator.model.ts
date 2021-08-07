@@ -1,6 +1,6 @@
 export interface ReportGenerator {
   reportNo: string;
-  toAddress: string;
+  toAddress: any;
   skiDCNo: string;
   custDCNo: string;
   lotNo: string;
