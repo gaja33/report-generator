@@ -99,7 +99,6 @@ export class VendorAddEditComponent implements OnInit {
 
   createUser() {
     this.vendorService.createVendor(this.form.value).subscribe((response) => {
-      console.log(response);
       this.router.navigate(["/vendors"]);
     });
   }
@@ -108,7 +107,6 @@ export class VendorAddEditComponent implements OnInit {
     this.vendorService
       .updateVendor(this.id, this.form.value)
       .subscribe((response) => {
-        console.log(response);
         this.router.navigate(["/vendors"]);
       });
   }

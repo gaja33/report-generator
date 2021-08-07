@@ -51,7 +51,6 @@ export class CategoryComponent implements OnInit, AfterViewInit {
   }
 
   deleteCategory(id) {
-    console.log(id);
     this.categoryService.deleteCategory(id).subscribe((resp) => {
       this.getCategory();
     });

@@ -37,7 +37,6 @@ export class ProductComponent implements OnInit, AfterViewInit {
       this.dataSource = new MatTableDataSource(resp);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(this.dataSource);
     });
   }
 
@@ -51,7 +50,6 @@ export class ProductComponent implements OnInit, AfterViewInit {
   }
 
   deleteProduct(item, i) {
-    console.log(item._id);
     this.productService.deleteProduct(item._id).subscribe((resp) => {
       this.getProducts();
     });

@@ -57,7 +57,6 @@ export class MetalsAddEditComponent implements OnInit {
 
   createMetal() {
     this.metalService.createMetal(this.form.value).subscribe((response) => {
-      console.log(response);
       this.router.navigate(["/metal"]);
     });
   }
@@ -66,7 +65,6 @@ export class MetalsAddEditComponent implements OnInit {
     this.metalService
       .updateMetal(this.id, this.form.value)
       .subscribe((response) => {
-        console.log(response);
         this.router.navigate(["/metal"]);
       });
   }

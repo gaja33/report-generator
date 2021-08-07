@@ -7,6 +7,7 @@ import { MetalsComponent } from "./components/metals/metals.component";
 import { ProductAddEditComponent } from "./components/product/product-add-edit/product-add-edit.component";
 import { ProductComponent } from "./components/product/product.component";
 import { ReportMasterComponent } from "./components/report-master/report-master.component";
+import { ReportGeneratorComponent } from "./components/report/report-generator/report-generator.component";
 import { ReportComponent } from "./components/report/report.component";
 import { VendorAddEditComponent } from "./components/vendor/vendor-add-edit/vendor-add-edit.component";
 import { VendorComponent } from "./components/vendor/vendor.component";
@@ -27,6 +28,8 @@ const routes: Routes = [
   { path: "products/edit/:id", component: ProductAddEditComponent },
   { path: "reportmaster", component: ReportMasterComponent },
   { path: "reports", component: ReportComponent },
+  { path: "reports/add", component: ReportGeneratorComponent },
+  { path: "reports/edit/:id", component: ReportGeneratorComponent },
 ];
 
 @NgModule({

@@ -58,7 +58,6 @@ export class CategoryAddEditComponent implements OnInit {
     this.categoryService
       .createCategory(this.form.value)
       .subscribe((response) => {
-        console.log(response);
         this.router.navigate(["/category"]);
       });
   }
@@ -67,7 +66,6 @@ export class CategoryAddEditComponent implements OnInit {
     this.categoryService
       .updateCategory(this.id, this.form.value)
       .subscribe((response) => {
-        console.log(response);
         this.router.navigate(["/category"]);
       });
   }
