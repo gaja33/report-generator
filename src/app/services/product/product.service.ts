@@ -12,7 +12,7 @@ import { Product } from "src/app/models/product/product.model";
   providedIn: "root",
 })
 export class ProductService {
-  baseUri: string = "http://localhost:4000/api/product";
+  baseUri: string = "http://127.0.0.1:4000/api/product";
   headers = new HttpHeaders().set("Content-Type", "application/json");
 
   constructor(private http: HttpClient) {}

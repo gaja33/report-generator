@@ -12,7 +12,7 @@ import { Category } from "src/app/models/category/category.model";
   providedIn: "root",
 })
 export class CategoryService {
-  baseUri: string = "http://localhost:4000/api/category";
+  baseUri: string = "http://127.0.0.1:4000/api/category";
   headers = new HttpHeaders().set("Content-Type", "application/json");
 
   constructor(private http: HttpClient) {}

@@ -12,7 +12,7 @@ import { Vendor } from "src/app/models/vendor/vendor.model";
   providedIn: "root",
 })
 export class VendorServicesService {
-  baseUri: string = "http://localhost:4000/api/vendor";
+  baseUri: string = "http://127.0.0.1:4000/api/vendor";
   headers = new HttpHeaders().set("Content-Type", "application/json");
 
   constructor(private http: HttpClient) {}
