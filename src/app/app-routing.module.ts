@@ -13,7 +13,7 @@ import { VendorAddEditComponent } from "./components/vendor/vendor-add-edit/vend
 import { VendorComponent } from "./components/vendor/vendor.component";
 
 const routes: Routes = [
-  { path: "", pathMatch: "full", redirectTo: "vendors" },
+  { path: "", pathMatch: "full", redirectTo: "reports" },
   { path: "vendors", component: VendorComponent },
   { path: "vendors/add", component: VendorAddEditComponent },
   { path: "vendors/edit/:id", component: VendorAddEditComponent },

@@ -12,7 +12,7 @@ import { Metal } from "src/app/models/metals/metal.model";
   providedIn: "root",
 })
 export class MetalService {
-  baseUri: string = "http://localhost:4000/api/metal";
+  baseUri: string = "http://127.0.0.1:4000/api/metal";
   headers = new HttpHeaders().set("Content-Type", "application/json");
 
   constructor(private http: HttpClient) {}

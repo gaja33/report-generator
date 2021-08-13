@@ -12,7 +12,7 @@ import { ReportMaster } from "src/app/models/report-master/report-master.model";
   providedIn: "root",
 })
 export class ReportMasterService {
-  baseUri: string = "http://localhost:4000/api/reportmaster";
+  baseUri: string = "http://127.0.0.1:4000/api/reportmaster";
   headers = new HttpHeaders().set("Content-Type", "application/json");
 
   constructor(private http: HttpClient) {}
