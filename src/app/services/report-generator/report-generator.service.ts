@@ -12,7 +12,7 @@ import { ReportGenerator } from "src/app/models/report-generator/report-generato
   providedIn: "root",
 })
 export class ReportGeneratorService {
-  baseUri: string = "http://localhost:4000/api/reportgenerator";
+  baseUri: string = "http://127.0.0.1:4000/api/reportgenerator";
   headers = new HttpHeaders().set("Content-Type", "application/json");
 
   constructor(private http: HttpClient) {}
