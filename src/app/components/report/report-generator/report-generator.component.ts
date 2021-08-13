@@ -255,7 +255,13 @@ export class ReportGeneratorComponent implements OnInit, AfterViewInit {
             widths: ["*", "*"],
             body: [
               [
-                `${this.form.value.toAddress.address}`,
+                [
+                  {
+                    text: `To: ${this.form.value.toAddress.compName}`,
+                    bold: true,
+                  },
+                  `${this.form.value.toAddress.address}`,
+                ],
                 {
                   layout: "lightHorizontalLines",
                   table: {
@@ -490,20 +496,28 @@ export class ReportGeneratorComponent implements OnInit, AfterViewInit {
     parts.forEach((part, index) => {
       exs.push([
         `${index + 1}`,
-        `${part.partName}`,
+        [
+          `${part.partName}`,
+          ``,
+          {
+            layout: "noBorders",
+            table: this.getThickens(part.thickness),
+          },
+        ],
         `${part.partNumber}`,
         {
           layout: "noBorders",
           table: this.getThickenss(part.thickness, part.category),
         },
         `${part.lot}`,
+        `${part.sampleNo}`,
       ]);
     });
 
     return {
       table: {
         headerRows: 1,
-        widths: [35, "*", "*", "*", 50],
+        widths: [35, "*", "*", "*", 50, 50],
         body: [
           [
             "Sl No.",
@@ -511,6 +525,7 @@ export class ReportGeneratorComponent implements OnInit, AfterViewInit {
             "PART NUMBER",
             "PLATING THICKNESS",
             "Lot Size",
+            "Samples",
           ],
           ...exs,
         ],
@@ -519,6 +534,23 @@ export class ReportGeneratorComponent implements OnInit, AfterViewInit {
   }
 
   getThickenss(thickness, category) {
+    const thicks = [];
+    thickness.forEach((thick) => {
+      thicks.push([`${thick.metalName} - ${thick.thicknes}`]);
+    });
+
+    return {
+      // headers are automatically repeated if the table spans over multiple pages
+      // you can declare how many rows should be treated as headers
+
+      headerRows: 1,
+      widths: ["*"],
+
+      body: [...thicks, [`${"Colour"} - ${category}`]],
+    };
+  }
+
+  getThickens(thickness) {
     const thicks = [];
     thickness.forEach((thick) => {
       thicks.push([`${thick.metalName} - ${thick.thickness}`]);
@@ -531,7 +563,7 @@ export class ReportGeneratorComponent implements OnInit, AfterViewInit {
       headerRows: 1,
       widths: ["*"],
 
-      body: [...thicks, [`${"Colour"} - ${category}`]],
+      body: [...thicks],
     };
   }
 
