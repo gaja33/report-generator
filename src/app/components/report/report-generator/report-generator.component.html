@@ -102,28 +102,46 @@
                   <th>Part Number</th>
                   <th>Part Name</th>
                   <th>Thickness</th>
-                  <th>Lot Size(Kg/No)</th>
-                  <th>Action</th>
+                  <th style="width: 150px">Lot Size(Kg/No)</th>
+                  <th style="width: 50px">Sample</th>
+                  <th style="width: 50px">Action</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let ticket of selectedA; let i = index">
                   <td>{{ i + 1 }}</td>
                   <td>{{ ticket.partNumber }}</td>
-                  <td>{{ ticket.partName }}</td>
+                  <td>
+                    {{ ticket.partName }} <br /><br />
+                    <div *ngFor="let metal of ticket.thickness; let j = index">
+                      {{ metal.metalName }} - {{ metal.thickness }}
+                    </div>
+                  </td>
                   <td>
                     <table>
                       <tbody>
                         <tr
                           *ngFor="let metal of ticket.thickness; let j = index"
                         >
-                          <td>{{ metal.metalName }}-{{ metal.thickness }}</td>
+                          <td>
+                            <mat-form-field appearance="fill">
+                              <span matPrefix
+                                >{{ metal.metalName }} &nbsp;</span
+                              >
+                              <input
+                                matInput
+                                placeholder="Enter Metal Thickness"
+                                [(ngModel)]="metal['thicknes']"
+                                [ngModelOptions]="{ standalone: true }"
+                              />
+                            </mat-form-field>
+                          </td>
                         </tr>
                       </tbody>
                     </table>
                   </td>
                   <td>
-                    <mat-form-field appearance="outline">
+                    <mat-form-field appearance="outline" style="width: 50px">
                       <input
                         matInput
                         placeholder="Enter Lot Size"
@@ -132,7 +150,23 @@
                       />
                     </mat-form-field>
                   </td>
-                  <td style="vertical-align: middle; text-align: center">
+                  <td>
+                    <mat-form-field appearance="outline" style="width: 50px">
+                      <input
+                        matInput
+                        placeholder="Enter Sample nos"
+                        [(ngModel)]="ticket['sampleNo']"
+                        [ngModelOptions]="{ standalone: true }"
+                      />
+                    </mat-form-field>
+                  </td>
+                  <td
+                    style="
+                      vertical-align: middle;
+                      text-align: center;
+                      width: 50px;
+                    "
+                  >
                     <mat-icon
                       style="color: red; cursor: pointer"
                       (click)="deleteParts(i)"
